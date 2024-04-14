@@ -1,8 +1,9 @@
-package model
+package testing
 
 import (
 	"go.uber.org/mock/gomock"
 	"salut/testing/db/mock"
+	"salut/testing/model"
 	"testing"
 )
 
@@ -12,7 +13,7 @@ func TestGetUserById(t *testing.T) {
 	db := mock.NewMockDb(ctrl)
 	db.EXPECT().
 		Query("SELECT * FROM users WHERE id = ?", 18).
-		Return(&User{}, nil)
+		Return(&model.User{}, nil)
 
 	GetUserById(db, 18)
 
